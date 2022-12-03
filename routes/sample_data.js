@@ -6,7 +6,7 @@ var database = require('../database');
 
 router.get("/", function(request, response, next){
 
-	var query = "SELECT * FROM sample_data ORDER BY id DESC";
+	var query = "SELECT * FROM covid_details";
 
 	database.query(query, function(error, data){
 
@@ -16,7 +16,7 @@ router.get("/", function(request, response, next){
 		}
 		else
 		{
-			response.render('sample_data', {title:'Node.js MySQL CRUD Application', action:'list', sampleData:data, message:request.flash('success')});
+			response.render('sample_data', {title:'Covid 19 data Management', action:'list', sampleData:data, message:request.flash('success')});
 		}
 
 	});
@@ -25,24 +25,30 @@ router.get("/", function(request, response, next){
 
 router.get("/add", function(request, response, next){
 
-	response.render("sample_data", {title:'Insert Data into MySQL', action:'add'});
+	response.render("sample_data", {title:'Insert covid Data', action:'add'});
 
 });
 
 router.post("/add_sample_data", function(request, response, next){
 
-	var first_name = request.body.first_name;
+	var state_name = request.body.state_name;
 
-	var last_name = request.body.last_name;
+	var date_of_record = request.body.date_of_record;
 
-	var age = request.body.age;
+	var no_of_samples = request.body.no_of_samples;
 
-	var gender = request.body.gender;
+	var no_of_deaths = request.body.no_of_deaths;
+
+	var no_of_positive = request.body.no_of_positive;
+
+	var no_of_negative = request.body.no_of_negative;
+
+	var no_of_discharge = request.body.no_of_discharge;
 
 	var query = `
 	INSERT INTO sample_data 
-	(first_name, last_name, age, gender) 
-	VALUES ("${first_name}", "${last_name}", "${age}", "${gender}")
+	(state_name, date_of_record, no_of_samples, no_of_deaths, no_of_positive, no_of_negative, no_of_discharge) 
+	VALUES ("${state_name}", "${date_of_record}", "${no_of_samples}", "${no_of_deaths}","${no_of_positive}","${no_of_negative}","${no_of_discharge}")
 	`;
 
 	database.query(query, function(error, data){
@@ -53,7 +59,7 @@ router.post("/add_sample_data", function(request, response, next){
 		}	
 		else
 		{
-			request.flash('success', 'Sample Data Inserted');
+			request.flash('success', 'Covid-19 Data Inserted');
 			response.redirect("/sample_data");
 		}
 
@@ -65,11 +71,11 @@ router.get('/edit/:id', function(request, response, next){
 
 	var id = request.params.id;
 
-	var query = `SELECT * FROM sample_data WHERE id = "${id}"`;
+	var query = `SELECT * FROM covid_details WHERE id = "${id}"`;
 
 	database.query(query, function(error, data){
 
-		response.render('sample_data', {title: 'Edit MySQL Table Data', action:'edit', sampleData:data[0]});
+		response.render('sample_data', {title: 'Edit Covid-19 Data', action:'edit', sampleData:data[0]});
 
 	});
 
@@ -79,20 +85,29 @@ router.post('/edit/:id', function(request, response, next){
 
 	var id = request.params.id;
 
-	var first_name = request.body.first_name;
+	var state_name = request.body.state_name;
 
-	var last_name = request.body.last_name;
+	var date_of_record = request.body.date_of_record;
 
-	var age = request.body.age;
+	var no_of_samples = request.body.no_of_samples;
 
-	var gender = request.body.gender;
+	var no_of_deaths = request.body.no_of_deaths;
+
+	var no_of_positive = request.body.no_of_positive;
+
+	var no_of_negative = request.body.no_of_negative;
+
+	var no_of_discharge = request.body.no_of_discharge;
 
 	var query = `
-	UPDATE sample_data 
-	SET first_name = "${first_name}", 
-	last_name = "${last_name}", 
-	age = "${age}", 
-	gender = "${gender}" 
+	UPDATE covid_details 
+	SET state_name = "${state_name}", 
+	date_of_record = "${date_of_record}", 
+	no_of_samples = "${no_of_samples}", 
+	no_of_deaths = "${no_of_deaths}",
+	no_of_positive = "${no_of_positive}",
+	no_of_negative = "${no_of_negative}"  ,
+	no_of_discharge = "${no_of_discharge}" 
 	WHERE id = "${id}"
 	`;
 
@@ -104,7 +119,7 @@ router.post('/edit/:id', function(request, response, next){
 		}
 		else
 		{
-			request.flash('success', 'Sample Data Updated');
+			request.flash('success', 'Covid-19 Data Updated');
 			response.redirect('/sample_data');
 		}
 
@@ -117,7 +132,7 @@ router.get('/delete/:id', function(request, response, next){
 	var id = request.params.id; 
 
 	var query = `
-	DELETE FROM sample_data WHERE id = "${id}"
+	DELETE FROM covid_details WHERE id = "${id}"
 	`;
 
 	database.query(query, function(error, data){
@@ -128,7 +143,7 @@ router.get('/delete/:id', function(request, response, next){
 		}
 		else
 		{
-			request.flash('success', 'Sample Data Deleted');
+			request.flash('success', 'Covid-19 Data Deleted');
 			response.redirect("/sample_data");
 		}
 

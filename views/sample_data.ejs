@@ -9,7 +9,7 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        <title></title>
+        <title>=Lab7-2147122</title>
     </head>
     <body>
         <div class="container">
@@ -18,37 +18,54 @@
             <% if(action == 'add') { %>
 
             <div class="card">
-                <div class="card-header">Sample Form</div>
+                <div class="card-header">Covid-19 Form</div>
                 <div class="card-body">
                     <form method="POST" action="/sample_data/add_sample_data">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>First Name</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" />
+                                    <label>State Name</label>
+                                    <input type="text" name="state_name" id="state_name" class="form-control" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Last Name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" />
+                                    <label>Date of Record</label>
+                                    <input type="date" name="date_of_record" id="date_of_record" class="form-control" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Age</label>
-                                    <input type="number" name="age" id="age" class="form-control" />
+                                    <label>No of Samples</label>
+                                    <input type="number" name="no_of_samples" id="no_of_samples" class="form-control" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Gender</label>
-                                    <select name="gender" class="form-control">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
+                                    <label>No of Death</label>
+                                    <input type="number" name="no_of_deaths" id="no_of_deaths" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Positive</label>
+                                    <input type="number" name="no_of_Positive" id="no_of_Positive" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Negative</label>
+                                    <input type="number" name="no_of_negative" id="no_of_negative" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Discharge</label>
+                                    <input type="number" name="no_of_discharge" id="no_of_discharge" class="form-control" />
                                 </div>
                             </div>
                         </div>
@@ -61,37 +78,52 @@
 
             <% } else if(action == 'edit') { %>
             <div class="card">
-                <div class="card-header">Sample Form</div>
+                <div class="card-header">Covid-19 Form</div>
                 <div class="card-body">
                     <form method="POST" action="/sample_data/edit/<%= sampleData.id %>">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>First Name</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" value="<%= sampleData.first_name %>" />
+                                    <label>State Name</label>
+                                    <input type="text" name="state_name" id="state_name" class="form-control" value="<%= sampleData.state_name %>" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Last Name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" value="<%= sampleData.last_name %>" />
+                                    <label>Date of Record</label>
+                                    <input type="date" name="date_of_record" id="date_of_record" class="form-control" value="<%= sampleData.date_of_record %>" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Age</label>
-                                    <input type="number" name="age" id="age" class="form-control" value="<%= sampleData.age %>" />
+                                    <label>No of Samples</label>
+                                    <input type="number" name="no_of_sample" id="no_of_sample" class="form-control" value="<%= sampleData.no_of_sample %>" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label>Gender</label>
-                                    <select name="gender" id="gender" class="form-control">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
+                                    <label>No of Death</label>
+                                    <input type="number" name="no_of_deaths" id="no_of_deaths" class="form-control" value="<%= sampleData.no_of_deaths %>" />                             
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Positive</label>
+                                    <input type="number" name="no_of_positive" id="no_of_positive" class="form-control" value="<%= sampleData.no_of_positive %>" />                             
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Negative</label>
+                                    <input type="number" name="no_of_negative" id="no_of_negative" class="form-control" value="<%= sampleData.no_of_negative %>" />                             
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>No of Discharge</label>
+                                    <input type="number" name="no_of_discharge" id="no_of_discharge" class="form-control" value="<%= sampleData.no_of_discharge %>" />                             
                                 </div>
                             </div>
                         </div>
@@ -99,9 +131,7 @@
                             <input type="submit" name="submit_button" class="btn btn-primary" value="Edit" />
                         </div>
                     </form>
-                    <script>
-                    document.getElementById('gender').value="<%= sampleData.gender %>";
-                    </script>
+    
                 </div>
             </div>
             <% } else { %>
@@ -113,7 +143,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col">Sample Data</div>
+                        <div class="col">Covid-19 Data</div>
                         <div class="col">
                             <a href="/sample_data/add" class="btn btn-success btn-sm float-end">Add</a>
                         </div>
@@ -123,10 +153,13 @@
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Age</th>
-                                <th>Gender</th>
+                                <th>State Name</th>
+                                <th>Date of Record</th>
+                                <th>No of Samples</th>
+                                <th>Deaths</th>
+                                <th>Positive</th>
+                                <th>Negative</th>
+                                <th>Discharge</th>
                                 <th>Action</th>
                             </tr>
                             <%
@@ -135,10 +168,13 @@
                                 sampleData.forEach(function(data){
                             %>
                             <tr>
-                                <td><%= data.first_name %></td>
-                                <td><%= data.last_name %></td>
-                                <td><%= data.age %></td>
-                                <td><%= data.gender %></td>
+                                <td><%= data.state_name %></td>
+                                <td><%= data.date_of_record %></td>
+                                <td><%= data.no_of_samples %></td>
+                                <td><%= data.no_of_deaths %></td>
+                                <td><%= data.no_of_positive %></td>
+                                <td><%= data.no_of_negative %></td>
+                                <td><%= data.no_of_discharge %></td>
                                 <td>
                                     <a href="/sample_data/edit/<%= data.id %>" class="btn btn-primary btn-sm">Edit</a>
                                     <a href="/sample_data/delete/<%= data.id %>" class="btn btn-danger btn-sm">Delete</a>

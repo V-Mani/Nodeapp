@@ -8,8 +8,8 @@ var session = require('express-session');
 
 var flash = require('connect-flash');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 var sampledataRouter = require('./routes/sample_data');
 
 
@@ -34,9 +34,9 @@ app.use(session({
 
 app.use(flash());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/sample_data', sampledataRouter);
+app.use('/', sampledataRouter);
+// app.use('/users', usersRouter);
+// app.use('/sample_data', sampledataRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
